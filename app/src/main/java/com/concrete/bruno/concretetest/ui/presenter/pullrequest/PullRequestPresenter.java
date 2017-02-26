@@ -13,12 +13,14 @@ public class PullRequestPresenter implements PullRequestMvpPresenter {
 
     private PullRequestView pullRequestView;
 
+    //TODO injetar essa dependência com o Dagger2
     public PullRequestPresenter(PullRequestView pullRequestView){
         this.pullRequestView = pullRequestView;
     }
 
     @Override
     public void loadPullRequests() {
+        //TODO Replace it with network call
         List<PullRequest> pullRequests = new ArrayList<>();
 
         PullRequest pullRequest = new PullRequest();
