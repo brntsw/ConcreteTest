@@ -53,4 +53,13 @@
         android:layout_toEndOf="@id/img_profile"
         android:layout_below="@+id/tv_login"/>
 
+    <TextView
+        android:id="@+id/tv_created_at"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:text="26/02/2017"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/tv_body"/>
+
 </RelativeLayout>

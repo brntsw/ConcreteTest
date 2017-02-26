@@ -11,7 +11,9 @@ import android.widget.TextView;
 import com.concrete.bruno.concretetest.R;
 import com.concrete.bruno.concretetest.model.PullRequest;
 import com.concrete.bruno.concretetest.ui.listener.IPullRequestItemClickListener;
+import com.concrete.bruno.concretetest.utils.DateUtils;
 
+import java.text.ParseException;
 import java.util.List;
 
 import butterknife.BindView;
@@ -79,6 +81,9 @@ public class PullRequestAdapter extends RecyclerView.Adapter<PullRequestAdapter.
         @BindView(R.id.tv_full_name)
         TextView tvFullName;
 
+        @BindView(R.id.tv_created_at)
+        TextView tvCreatedAt;
+
         ViewHolder(View v) {
             super(v);
             ButterKnife.bind(this, v);
@@ -90,6 +95,11 @@ public class PullRequestAdapter extends RecyclerView.Adapter<PullRequestAdapter.
             //imgProfile TODO obter a imagem da url através do Glide
             tvLogin.setText(pullRequest.getLogin());
             tvFullName.setText(pullRequest.getLogin());
+            try {
+                tvCreatedAt.setText(DateUtils.convertDate(pullRequest.getCreatedAt()));
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
         }
     }
 

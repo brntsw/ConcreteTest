@@ -6,6 +6,13 @@ package com.concrete.bruno.concretetest.utils;
 
 public class AppConstants {
 
+    public static final int TIMEOUT = 300;
+    public static final int NUMBER_OF_THREADS = 20;
+
+    public static final String BASE_URL = "https://api.github.com/";
+    public static final String REPOSITORIES_URL = "search/repositories";
+    public static final String PULL_REQUESTS_URL = "repos";
+
     public static final int STATUS_CODE_SUCCESS = 200;
     public static final int STATUS_CODE_SUCCESS_NO_BODY = 204;
     public static final int STATUS_CODE_ERROR = 500;

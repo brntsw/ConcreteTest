@@ -1,27 +1,27 @@
 package com.concrete.bruno.concretetest.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 /**
  * Created by BRUNO on 23/02/2017.
  */
-
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class Repository {
 
     //TODO Utilizar o Jackson
-
-    private long id;
+    @JsonProperty("name")
     private String name;
+    @JsonProperty("description")
     private String description;
+    @JsonProperty("forks_count")
     private int numberForks;
+    @JsonProperty("stargazers_count")
     private int starGazersCount;
+    @JsonProperty("owner")
     private Owner owner;
-
-    public long getId() {
-        return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public String getName() {
         return name;

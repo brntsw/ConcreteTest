@@ -1,5 +1,7 @@
 package com.concrete.bruno.concretetest.model;
 
+import java.util.Date;
+
 /**
  * Created by BRUNO on 23/02/2017.
  */
@@ -13,6 +15,7 @@ public class PullRequest {
     private String login;
     private String avatarUrl; //"user" -> "avatar_url"
     private String body; //"body"
+    private String createdAt; //"created_at"
     private int openIssuesCount; //Faz um count de quantos estão com "closed_at" como null
     private int closedIssuesCount; //É o count do "closed_at" != null
 
@@ -54,6 +57,14 @@ public class PullRequest {
 
     public void setBody(String body) {
         this.body = body;
+    }
+
+    public String getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(String createdAt) {
+        this.createdAt = createdAt;
     }
 
     public int getOpenIssuesCount() {

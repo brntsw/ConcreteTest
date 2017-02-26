@@ -34,6 +34,7 @@ ext {
     supportLibraryVersion = '25.1.1'
     retrofitVersion = '2.2.0'
     jacksonVersion = '2.8.0'
+    okHttpVersion = '3.4.1'
     butterknifeVersion = '8.5.1'
     dagger2Version = '2.8'
 

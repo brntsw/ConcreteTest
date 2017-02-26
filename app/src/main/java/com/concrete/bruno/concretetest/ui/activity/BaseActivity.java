@@ -1,6 +1,8 @@
 package com.concrete.bruno.concretetest.ui.activity;
 
 import android.app.ProgressDialog;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.design.widget.Snackbar;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +10,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.concrete.bruno.concretetest.R;
+import com.concrete.bruno.concretetest.di.component.ActivityComponent;
+import com.concrete.bruno.concretetest.di.module.ActivityModule;
 import com.concrete.bruno.concretetest.ui.presenter.base.MvpView;
 import com.concrete.bruno.concretetest.utils.CommonUtils;
 import com.concrete.bruno.concretetest.utils.NetworkUtils;
@@ -23,6 +27,20 @@ public abstract class BaseActivity extends AppCompatActivity implements MvpView 
     private ProgressDialog mProgressDialog;
 
     private Unbinder mUnBinder;
+
+    //private ActivityComponent mActivityComponent;
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        /*mActivityComponent = DaggerActivityComponent.builder()
+                .activityModule(new ActivityModule(this))
+                .build();*/
+    }
+
+    /*public ActivityComponent getActivityComponent() {
+        return mActivityComponent;
+    }*/
 
     @Override
     public void showLoading() {

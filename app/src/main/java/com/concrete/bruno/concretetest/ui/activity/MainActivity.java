@@ -13,15 +13,21 @@ import android.view.MenuItem;
 import com.concrete.bruno.concretetest.R;
 import com.concrete.bruno.concretetest.model.Repository;
 import com.concrete.bruno.concretetest.ui.adapter.RepositoryAdapter;
+import com.concrete.bruno.concretetest.ui.presenter.repository.RepositoryMvpPresenter;
 import com.concrete.bruno.concretetest.ui.presenter.repository.RepositoryPresenter;
 import com.concrete.bruno.concretetest.ui.presenter.repository.RepositoryView;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MainActivity extends BaseActivity implements RepositoryView {
+
+    //@Inject
+    //RepositoryMvpPresenter repositoryMvpPresenter;
 
     @BindView(R.id.drawer_layout)
     DrawerLayout mDrawer;
@@ -40,13 +46,15 @@ public class MainActivity extends BaseActivity implements RepositoryView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //getActivityComponent().inject(this);
+
         setUnBinder(ButterKnife.bind(this));
 
         setUp();
 
         //TODO Utilizar o Dagger2 para remover essa dependência
-        RepositoryPresenter repositoryPresenter = new RepositoryPresenter(this);
-        repositoryPresenter.loadRepositories();
+        RepositoryMvpPresenter repositoryMvpPresenter = new RepositoryPresenter(this);
+        repositoryMvpPresenter.loadRepositories("Java");
     }
 
     @Override
