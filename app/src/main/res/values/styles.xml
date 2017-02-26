@@ -1,11 +1,64 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light">
-        <!-- Customize your theme here. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:textColorPrimary">@color/black_effective</item>
+        <item name="android:textColor">@color/black_effective</item>
+        <item name="android:windowBackground">@color/bg_color</item>
+        <item name="drawerArrowStyle">@style/BarStyle</item>
+    </style>
+
+    <!-- Text appearance -->
+    <style name="Text">
+        <item name="android:textColor">@color/black_effective</item>
+    </style>
+
+    <style name="Text.Title" parent="Text">
+        <item name="android:textColor">@color/color_title</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:paddingBottom">5dp</item>
+    </style>
+
+    <style name="Text.Description" parent="Text">
+        <item name="android:paddingBottom">5dp</item>
+    </style>
+
+    <style name="Text.Number" parent="Text">
+        <item name="android:paddingLeft">7dp</item>
+        <item name="android:paddingRight">7dp</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="Text.Username" parent="Text">
+        <item name="android:paddingTop">3dp</item>
+        <item name="android:textColor">@color/color_username</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+    </style>
+
+    <style name="Text.FullName" parent="Text">
+        <item name="android:paddingTop">3dp</item>
+        <item name="android:textColor">@color/color_full_name</item>
+        <item name="android:layout_gravity">center_horizontal</item>
+    </style>
+
+    <style name="BarStyle" parent="Widget.AppCompat.DrawerArrowToggle">
+        <item name="color">@android:color/white</item>
+    </style>
+
+    <style name="Toolbar" parent="Base.ThemeOverlay.AppCompat.Dark.ActionBar">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:minHeight">?attr/actionBarSize</item>
+    </style>
+
+    <style name="Toolbar.TitleText">
+        <item name="android:textColor">@color/white</item>
+        <item name="android:textSize">22sp</item>
     </style>
 
 </resources>

@@ -1,3 +1,20 @@
 <resources>
-    <string name="app_name">ConcreteTest</string>
+    <string name="app_name">Github Pop</string>
+    <string name="about">About</string>
+
+    <!--App Message-->
+    <string name="some_error">Some error has occurred</string>
+
+    <!-- Content description -->
+    <string name="github_drawer">Github Pop menu</string>
+    <string name="repository_owner">Repository owner</string>
+    <string name="number_forks">Number of forks</string>
+    <string name="number_stars">Number of stars</string>
+    <string name="pull_request_user">Pull request user</string>
+
+    <!--Drawer-->
+    <string name="open_drawer">Drawer Open</string>
+    <string name="close_drawer">Drawer Close</string>
+
+    <string name="slash">/</string>
 </resources>
