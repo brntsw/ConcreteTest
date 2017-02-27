@@ -19,4 +19,6 @@
     <string name="close_drawer">Drawer Close</string>
 
     <string name="slash">/</string>
+    <string name="opened_issues">%1$d opened</string>
+    <string name="closed_issues">%1$d closed</string>
 </resources>

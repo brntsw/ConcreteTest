@@ -47,12 +47,14 @@
                 android:layout_height="wrap_content"
                 android:paddingLeft="5dp"
                 android:paddingRight="5dp"
+                style="@style/Text"
                 android:text="@string/slash"/>
 
             <TextView
                 android:id="@+id/tv_num_closed_pulls"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                style="@style/Text"
                 tools:text="800 closed"/>
 
         </LinearLayout>

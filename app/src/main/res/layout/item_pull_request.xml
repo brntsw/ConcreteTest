@@ -61,6 +61,7 @@
         android:layout_height="wrap_content"
         tools:text="26/02/2017"
         android:textStyle="bold"
+        style="@style/Text"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:layout_below="@+id/tv_body"/>

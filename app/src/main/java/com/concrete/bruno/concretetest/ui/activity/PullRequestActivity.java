@@ -63,6 +63,7 @@ public class PullRequestActivity extends BaseActivity implements PullRequestView
 
     @Override
     public void showListPullRequest(List<PullRequest> pullRequests) {
+        setIssuesNumbers(pullRequests);
         PullRequestAdapter adapter = new PullRequestAdapter(this, pullRequests);
         adapter.setOnItemClickListener(this);
         recyclerPullRequest.setAdapter(adapter);
@@ -72,5 +73,21 @@ public class PullRequestActivity extends BaseActivity implements PullRequestView
     public void onRecyclerViewItemClicked(String url) {
         Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(url));
         startActivity(intent);
+    }
+
+    private void setIssuesNumbers(List<PullRequest> pullRequests){
+        int openIssuesCount = 0;
+        int closedIssuesCount = 0;
+        for(int i = 0; i < pullRequests.size(); i++){
+            if(pullRequests.get(i).getClosedAt() == null){
+                openIssuesCount++;
+            }
+            else{
+                closedIssuesCount++;
+            }
+        }
+
+        tvNumOpenedPulls.setText(getString(R.string.opened_issues, openIssuesCount));
+        tvNumClosedPulls.setText(getString(R.string.closed_issues, closedIssuesCount));
     }
 }

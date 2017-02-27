@@ -1,12 +1,10 @@
 <resources>
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.NoActionBar">
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
-        <item name="android:textColorPrimary">@color/black_effective</item>
-        <item name="android:textColor">@color/black_effective</item>
         <item name="android:windowBackground">@color/bg_color</item>
         <item name="drawerArrowStyle">@style/BarStyle</item>
     </style>
