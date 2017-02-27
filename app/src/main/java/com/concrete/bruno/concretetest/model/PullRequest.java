@@ -1,21 +1,28 @@
 package com.concrete.bruno.concretetest.model;
 
-import java.util.Date;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * Created by BRUNO on 23/02/2017.
  */
-
+@JsonInclude(JsonInclude.Include.NON_NULL)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class PullRequest {
 
-    //TODO Utilizar o Jackson
-
+    @JsonProperty("title")
     private String title;
-    private String url; //"html_url"
-    private String login;
-    private String avatarUrl; //"user" -> "avatar_url"
-    private String body; //"body"
-    private String createdAt; //"created_at"
+    @JsonProperty("html_url")
+    private String url;
+    @JsonProperty("user")
+    private UserPullRequest userPullRequest;
+    @JsonProperty("body")
+    private String body;
+    @JsonProperty("created_at")
+    private String createdAt;
+    @JsonProperty("closed_at")
+    private String closedAt;
     private int openIssuesCount; //Faz um count de quantos estão com "closed_at" como null
     private int closedIssuesCount; //É o count do "closed_at" != null
 
@@ -35,20 +42,12 @@ public class PullRequest {
         this.url = url;
     }
 
-    public String getLogin() {
-        return login;
+    public UserPullRequest getUserPullRequest() {
+        return userPullRequest;
     }
 
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getAvatarUrl() {
-        return avatarUrl;
-    }
-
-    public void setAvatarUrl(String avatarUrl) {
-        this.avatarUrl = avatarUrl;
+    public void setUserPullRequest(UserPullRequest userPullRequest) {
+        this.userPullRequest = userPullRequest;
     }
 
     public String getBody() {
@@ -65,6 +64,14 @@ public class PullRequest {
 
     public void setCreatedAt(String createdAt) {
         this.createdAt = createdAt;
+    }
+
+    public String getClosedAt() {
+        return closedAt;
+    }
+
+    public void setClosedAt(String closedAt) {
+        this.closedAt = closedAt;
     }
 
     public int getOpenIssuesCount() {

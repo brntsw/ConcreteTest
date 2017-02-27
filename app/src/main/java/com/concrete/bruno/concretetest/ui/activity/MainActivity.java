@@ -1,5 +1,6 @@
 package com.concrete.bruno.concretetest.ui.activity;
 
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -13,9 +14,11 @@ import android.view.MenuItem;
 import com.concrete.bruno.concretetest.R;
 import com.concrete.bruno.concretetest.model.Repository;
 import com.concrete.bruno.concretetest.ui.adapter.RepositoryAdapter;
+import com.concrete.bruno.concretetest.ui.listener.IRepositoryItemClickListener;
 import com.concrete.bruno.concretetest.ui.presenter.repository.RepositoryMvpPresenter;
 import com.concrete.bruno.concretetest.ui.presenter.repository.RepositoryPresenter;
 import com.concrete.bruno.concretetest.ui.presenter.repository.RepositoryView;
+import com.concrete.bruno.concretetest.utils.AppConstants;
 
 import java.util.List;
 
@@ -24,7 +27,7 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class MainActivity extends BaseActivity implements RepositoryView {
+public class MainActivity extends BaseActivity implements RepositoryView, IRepositoryItemClickListener {
 
     //@Inject
     //RepositoryMvpPresenter repositoryMvpPresenter;
@@ -82,7 +85,8 @@ public class MainActivity extends BaseActivity implements RepositoryView {
 
     @Override
     public void showListRepository(List<Repository> repositories) {
-        RepositoryAdapter adapter = new RepositoryAdapter(repositories);
+        RepositoryAdapter adapter = new RepositoryAdapter(this, repositories);
+        adapter.setOnItemClickListener(this);
         recyclerRepository.setAdapter(adapter);
     }
 
@@ -100,5 +104,12 @@ public class MainActivity extends BaseActivity implements RepositoryView {
                 }
             }
         });
+    }
+
+    @Override
+    public void onRecyclerViewItemClicked(String fullName) {
+        Intent intent = new Intent(MainActivity.this, PullRequestActivity.class);
+        intent.putExtra(AppConstants.BUNDLE_FULL_NAME, fullName);
+        startActivity(intent);
     }
 }

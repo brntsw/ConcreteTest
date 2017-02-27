@@ -1,6 +1,7 @@
 package com.concrete.bruno.concretetest.remote;
 
 import com.concrete.bruno.concretetest.model.ListRepository;
+import com.concrete.bruno.concretetest.model.PullRequest;
 import com.concrete.bruno.concretetest.model.Repository;
 import com.concrete.bruno.concretetest.utils.AppConstants;
 
@@ -18,6 +19,7 @@ import retrofit2.Retrofit;
 import retrofit2.converter.jackson.JacksonConverterFactory;
 import retrofit2.http.GET;
 import retrofit2.http.Headers;
+import retrofit2.http.Path;
 import retrofit2.http.QueryMap;
 
 /**
@@ -29,6 +31,9 @@ public interface RestApi {
     @Headers({"Accept: application/json", "Content-type: application/json"})
     @GET(AppConstants.REPOSITORIES_URL)
     Call<ListRepository> getRepositories(@QueryMap Map<String, String> params);
+
+    @GET(AppConstants.PULL_REQUESTS_URL)
+    Call<List<PullRequest>> getPullRequests(@Path(value = "name", encoded = true) String fullName);
 
     class Builder{
         private static HttpLoggingInterceptor getLoggingInterceptor(){

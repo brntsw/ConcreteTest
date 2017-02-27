@@ -11,7 +11,7 @@ public class AppConstants {
 
     public static final String BASE_URL = "https://api.github.com/";
     public static final String REPOSITORIES_URL = "search/repositories";
-    public static final String PULL_REQUESTS_URL = "repos";
+    public static final String PULL_REQUESTS_URL = "repos/{name}/pulls";
 
     public static final int STATUS_CODE_SUCCESS = 200;
     public static final int STATUS_CODE_SUCCESS_NO_BODY = 204;
@@ -19,5 +19,7 @@ public class AppConstants {
     public static final int STATUS_CODE_NOT_FOUND = 404;
 
     public static final String DB_NAME = "concrete_github.db";
+
+    public static final String BUNDLE_FULL_NAME = "fullName";
 
 }

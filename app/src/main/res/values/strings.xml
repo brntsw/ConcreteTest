@@ -4,6 +4,8 @@
 
     <!--App Message-->
     <string name="some_error">Some error has occurred</string>
+    <string name="pull_requests_not_found">The pull requests could not be found</string>
+    <string name="no_pull_requests">No pull requests available</string>
 
     <!-- Content description -->
     <string name="github_drawer">Github Pop menu</string>

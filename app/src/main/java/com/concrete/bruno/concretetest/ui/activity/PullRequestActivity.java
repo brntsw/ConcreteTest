@@ -12,8 +12,10 @@ import com.concrete.bruno.concretetest.R;
 import com.concrete.bruno.concretetest.model.PullRequest;
 import com.concrete.bruno.concretetest.ui.adapter.PullRequestAdapter;
 import com.concrete.bruno.concretetest.ui.listener.IPullRequestItemClickListener;
+import com.concrete.bruno.concretetest.ui.presenter.pullrequest.PullRequestMvpPresenter;
 import com.concrete.bruno.concretetest.ui.presenter.pullrequest.PullRequestPresenter;
 import com.concrete.bruno.concretetest.ui.presenter.pullrequest.PullRequestView;
+import com.concrete.bruno.concretetest.utils.AppConstants;
 
 import java.util.List;
 
@@ -44,20 +46,24 @@ public class PullRequestActivity extends BaseActivity implements PullRequestView
         setUp();
 
         //TODO Utilizar o Dagger2 para remover essa dependência
-        PullRequestPresenter presenter = new PullRequestPresenter(this);
-        presenter.loadPullRequests();
+        PullRequestMvpPresenter presenter = new PullRequestPresenter(this);
+        presenter.loadPullRequests(this, getIntent().getExtras().getString(AppConstants.BUNDLE_FULL_NAME));
     }
 
     @Override
     protected void setUp() {
         setSupportActionBar(mToolbar);
+        if(getSupportActionBar() != null){
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerPullRequest.setLayoutManager(layoutManager);
     }
 
     @Override
     public void showListPullRequest(List<PullRequest> pullRequests) {
-        PullRequestAdapter adapter = new PullRequestAdapter(pullRequests);
+        PullRequestAdapter adapter = new PullRequestAdapter(this, pullRequests);
         adapter.setOnItemClickListener(this);
         recyclerPullRequest.setAdapter(adapter);
     }

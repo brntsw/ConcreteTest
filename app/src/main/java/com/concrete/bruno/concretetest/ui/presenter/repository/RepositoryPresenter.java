@@ -38,7 +38,6 @@ public class RepositoryPresenter implements RepositoryMvpPresenter {
 
     @Override
     public void loadRepositories(String language) {
-        //TODO Replace it with network call
         Map<String, String> params = new HashMap<>();
         params.put("q", "language:" + language);
         params.put("sort", "stars");

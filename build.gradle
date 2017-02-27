@@ -37,6 +37,7 @@ ext {
     okHttpVersion = '3.4.1'
     butterknifeVersion = '8.5.1'
     dagger2Version = '2.8'
+    picassoVersion = '2.5.2'
 
     //Test dependencies
     junitVersion = '4.12'

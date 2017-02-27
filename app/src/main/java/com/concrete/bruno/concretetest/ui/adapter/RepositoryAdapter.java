@@ -1,14 +1,19 @@
 package com.concrete.bruno.concretetest.ui.adapter;
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.concrete.bruno.concretetest.R;
 import com.concrete.bruno.concretetest.model.Repository;
+import com.concrete.bruno.concretetest.ui.listener.IRepositoryItemClickListener;
+import com.concrete.bruno.concretetest.utils.ImageUtils;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -21,10 +26,17 @@ import butterknife.ButterKnife;
 
 public class RepositoryAdapter extends RecyclerView.Adapter<RepositoryAdapter.ViewHolder> {
 
+    private Context context;
     private List<Repository> repositories;
+    private IRepositoryItemClickListener mListener;
 
-    public RepositoryAdapter(List<Repository> repositories){
+    public RepositoryAdapter(Context context, List<Repository> repositories){
+        this.context = context;
         this.repositories = repositories;
+    }
+
+    public void setOnItemClickListener(IRepositoryItemClickListener listener){
+        mListener = listener;
     }
 
     @Override
@@ -35,9 +47,16 @@ public class RepositoryAdapter extends RecyclerView.Adapter<RepositoryAdapter.Vi
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        Repository repository = repositories.get(position);
+        final Repository repository = repositories.get(position);
         if(repository != null){
             holder.bind(repository);
+
+            holder.parentView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    mListener.onRecyclerViewItemClicked(repository.getFullName());
+                }
+            });
         }
     }
 
@@ -47,6 +66,9 @@ public class RepositoryAdapter extends RecyclerView.Adapter<RepositoryAdapter.Vi
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
+        @BindView(R.id.parent_view)
+        LinearLayout parentView;
+
         @BindView(R.id.tv_repository_name)
         TextView tvRepositoryName;
 
@@ -78,9 +100,10 @@ public class RepositoryAdapter extends RecyclerView.Adapter<RepositoryAdapter.Vi
             tvDescription.setText(repository.getDescription());
             tvNumberForks.setText(String.valueOf(repository.getNumberForks()));
             tvNumberStars.setText(String.valueOf(repository.getStarGazersCount()));
-            //imgProfile TODO obter a imagem da url através do Glide
+            int measureImage = ImageUtils.getMeasureProfileImage(context);
+            Picasso.with(context).load(repository.getOwner().getAvatarUrl()).error(R.drawable.user).placeholder(R.drawable.user).resize(measureImage, measureImage).into(imgProfile);
             tvUsername.setText(repository.getOwner().getName());
-            tvFullName.setText(repository.getOwner().getName());
+            tvFullName.setText(repository.getFullName());
         }
     }
 

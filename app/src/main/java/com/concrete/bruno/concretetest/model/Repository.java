@@ -11,9 +11,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Repository {
 
-    //TODO Utilizar o Jackson
     @JsonProperty("name")
     private String name;
+    @JsonProperty("full_name")
+    private String fullName;
     @JsonProperty("description")
     private String description;
     @JsonProperty("forks_count")
@@ -29,6 +30,14 @@ public class Repository {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public int getNumberForks() {
