@@ -37,11 +37,11 @@ public class RepositoryPresenter implements RepositoryMvpPresenter {
     }
 
     @Override
-    public void loadRepositories(String language) {
+    public void loadRepositories(String language, final int page) {
         Map<String, String> params = new HashMap<>();
         params.put("q", "language:" + language);
         params.put("sort", "stars");
-        params.put("page", "1");
+        params.put("page", String.valueOf(page));
 
         repositoryView.showLoading();
 
@@ -51,7 +51,13 @@ public class RepositoryPresenter implements RepositoryMvpPresenter {
             public void onResponse(Call<ListRepository> call, Response<ListRepository> response) {
                 repositoryView.hideLoading();
                 if(response.code() == AppConstants.STATUS_CODE_SUCCESS){
-                    repositoryView.showListRepository(response.body().getRepositories());
+                    if(page == 1){
+                        repositoryView.showListRepository(response.body().getRepositories());
+                    }
+
+                    if(page > 1){
+                        repositoryView.showMoreItems(response.body().getRepositories());
+                    }
                 }
             }
 

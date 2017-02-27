@@ -6,6 +6,6 @@ package com.concrete.bruno.concretetest.ui.presenter.repository;
 
 public interface RepositoryMvpPresenter {
 
-    void loadRepositories(String language);
+    void loadRepositories(String language, int page);
 
 }

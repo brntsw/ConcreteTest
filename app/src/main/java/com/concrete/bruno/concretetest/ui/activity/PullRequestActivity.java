@@ -36,10 +36,14 @@ public class PullRequestActivity extends BaseActivity implements PullRequestView
     @BindView(R.id.recycler_pull_request)
     RecyclerView recyclerPullRequest;
 
+    private Bundle extras;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_pull_request);
+
+        extras = getIntent().getExtras();
 
         setUnBinder(ButterKnife.bind(this));
 
@@ -47,7 +51,7 @@ public class PullRequestActivity extends BaseActivity implements PullRequestView
 
         //TODO Utilizar o Dagger2 para remover essa dependência
         PullRequestMvpPresenter presenter = new PullRequestPresenter(this);
-        presenter.loadPullRequests(this, getIntent().getExtras().getString(AppConstants.BUNDLE_FULL_NAME));
+        presenter.loadPullRequests(this, extras.getString(AppConstants.BUNDLE_FULL_NAME));
     }
 
     @Override
@@ -55,6 +59,7 @@ public class PullRequestActivity extends BaseActivity implements PullRequestView
         setSupportActionBar(mToolbar);
         if(getSupportActionBar() != null){
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+            getSupportActionBar().setTitle(extras.getString(AppConstants.BUNDLE_FULL_NAME));
         }
         getSupportActionBar().setDisplayShowHomeEnabled(true);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);

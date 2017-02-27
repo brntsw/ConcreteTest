@@ -13,4 +13,6 @@ public interface RepositoryView extends MvpView {
 
     void showListRepository(List<Repository> repositories);
 
+    void showMoreItems(List<Repository> repositories);
+
 }

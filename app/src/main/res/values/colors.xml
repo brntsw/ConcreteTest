@@ -18,4 +18,5 @@
     <color name="color_full_name">#aaaaaa</color>
     <color name="gray_header">#efefef</color>
     <color name="red_opened_pull_request">#EF5350</color>
+    <color name="animated_loading">#aaa</color>
 </resources>
