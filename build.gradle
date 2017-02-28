@@ -31,7 +31,7 @@ ext {
     buildToolsVersion = '25.0.2'
 
     //Libraries
-    supportLibraryVersion = '25.1.1'
+    supportLibraryVersion = '25.2.0'
     retrofitVersion = '2.2.0'
     jacksonVersion = '2.8.0'
     okHttpVersion = '3.4.1'
@@ -43,4 +43,5 @@ ext {
     junitVersion = '4.12'
     espressoVersion = '2.2.2'
     mockitoVersion = '2.7.1'
+    hamcrestVersion = '1.3'
 }

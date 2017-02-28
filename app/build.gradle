@@ -56,8 +56,20 @@ dependencies {
     testCompile "org.mockito:mockito-core:$rootProject.mockitoVersion"
 
     //UI tests
-    androidTestCompile("com.android.support.test.espresso:espresso-core:$rootProject.espressoVersion", {
+    androidTestCompile("com.android.support.test.espresso:espresso-core:$rootProject.espressoVersion") {
+        // Necessary if your app targets Marshmallow (since Espresso
+        // hasn't moved to Marshmallow yet)
         exclude group: 'com.android.support', module: 'support-annotations'
-    })
+    }
+    androidTestCompile ("com.android.support.test.espresso:espresso-contrib:$rootProject.espressoVersion") {
+        exclude group: 'com.android.support', module: 'appcompat'
+        exclude group: 'com.android.support', module: 'appcompat-v7'
+        exclude group: 'com.android.support', module: 'design'
+        exclude group: 'com.android.support', module: 'support-v4'
+        exclude group: 'com.android.support', module: 'support-annotations'
+        exclude module: 'recyclerview-v7'
+    }
+    androidTestCompile "com.android.support.test.espresso:espresso-intents:$rootProject.espressoVersion"
     androidTestCompile "org.mockito:mockito-core:$rootProject.mockitoVersion"
+    androidTestCompile "org.hamcrest:hamcrest-library:$rootProject.hamcrestVersion"
 }
